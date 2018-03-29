@@ -73,7 +73,7 @@ module.exports = (options) => {
       use: ['style-loader', 'css-loader?sourceMap=true', 'sass-loader']
     }, {
       test: /\.js$/,
-      use: 'eslint-loader',
+      //use: 'eslint-loader',
       exclude: /node_modules/
     });
 

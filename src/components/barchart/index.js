@@ -9,6 +9,7 @@
 
 // Imports
 import * as d3 from 'd3';
+import { merge } from 'lodash';
 
 class BarChart { // Should we have a parent class that this component extends? like => class BarChart extends d3Component / d3WrapperComponent or something like that?
 
@@ -21,8 +22,8 @@ class BarChart { // Should we have a parent class that this component extends? l
 	 * @param {Object} obj.el - element which will be saved in this.el
 	 * @param {Object} obj.options - options which will be passed in as JSON object
 	 */
-	constructor(obj) {
-		let options = {
+	constructor(options) {
+		let defaultOptions = {
 			chartContainer: '[data-js-item="chart"]',
 			data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
 			xKey: null, // todo: what if this is an array? => select dropdown => update on change etc
@@ -44,9 +45,8 @@ class BarChart { // Should we have a parent class that this component extends? l
 			}
 		};
 
-        this.options = options;
-
-		//super(obj, options);
+        this.options = merge(defaultOptions, options);
+        console.log(this.options); 
 	}
 
 
@@ -66,7 +66,6 @@ class BarChart { // Should we have a parent class that this component extends? l
 	 */
 	initialize() {
         this.chartContainer = document.querySelector(this.options.chartContainer);
-        
         if (this.options.standalone) {
 			this.addData();
 			this.displayChart();
@@ -210,25 +209,20 @@ class BarChart { // Should we have a parent class that this component extends? l
 			.classed('bar', true);
 
 		this.svg
-			.selectAll('rect')
+			.selectAll('rect.bar')
 			.attr('x', (d) => {
 				return this.calculateX(d);
 			}) 
-			.attr('y', (d) => {
-				if (this.options.transitionDuration) {
-					return this.height;
-				}
-				return this.height - Math.abs(this.calculateY(d) - this.yScale(0));
+			.attr('y', () => {
+                return this.height;
 			})
 			.attr('width', () => {
 				return this.getXScale(this.xData? this.xData: this.data).bandwidth();
 			})
 			.style('transform', () => {
-				return this.options.transitionDuration? 'rotate(0.5turn) translateY(0%)' : '';
-			})
-			.style('transform-origin', () => {
-				return this.options.transitionDuration? '50% 50%' : '';
-			})
+                const translateY = this.yScale(0) + this.height;
+                return 'rotateX(180deg)' + ' translateY(-' + translateY + 'px)';
+            })
 			.transition()
 			.delay(this.options.transitionDelay? this.options.transitionDelay : 0)
 			.duration(this.options.transitionDuration? this.options.transitionDuration : 0)

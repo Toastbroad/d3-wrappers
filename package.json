@@ -1,0 +1,26 @@
+{
+  "name": "d3-wrappers",
+  "version": "1.0.0",
+  "description": "A collection of thin wrappers around d3",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Toastbroad/d3-wrappers.git"
+  },
+  "keywords": [
+    "d3",
+    "wrappers",
+    "infographics",
+    "data",
+    "visualization"
+  ],
+  "author": "Oliver Broad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Toastbroad/d3-wrappers/issues"
+  },
+  "homepage": "https://github.com/Toastbroad/d3-wrappers#readme"
+}

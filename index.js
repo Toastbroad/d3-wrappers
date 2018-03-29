@@ -1,3 +1,5 @@
-const BarChart = require('./lib/components/barchart');
+const BarChart = require('./lib/barChart');
 
-console.log(BarChart);
+module.exports = {
+    BarChart: BarChart,
+};

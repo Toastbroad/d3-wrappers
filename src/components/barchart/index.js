@@ -46,7 +46,6 @@ class BarChart { // Should we have a parent class that this component extends? l
 		};
 
         this.options = merge(defaultOptions, options);
-        console.log(this.options); 
 	}
 
 
@@ -108,7 +107,11 @@ class BarChart { // Should we have a parent class that this component extends? l
 	}
 
 	checkKey(key) {
-		let keyExists = this.keys.indexOf(key) != -1;
+        if (this.keys.constructor !== Array) {
+            throw new Error('No data keys defined.')
+        }
+        
+        let keyExists = this.keys.indexOf(key) != -1;
 
 		if (!keyExists) {
 			throw new Error(`The key "${key}" you have provided is not available in the data.`);

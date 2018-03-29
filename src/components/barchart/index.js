@@ -93,7 +93,11 @@ class BarChart { // Should we have a parent class that this component extends? l
 	}
 
 	addData(data = this.options.data) {
-		this.data = data;
+        if (typeof data === 'undefined') {
+            throw new Error('The data you have passed is undefined!');
+        }
+
+        this.data = data;
 
 		if (this.options.xKey || this.options.yKey) {
 			this.keys = Object.keys(data[0]);

@@ -1,6 +1,6 @@
 {
   "name": "d3-wrappers",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A collection of thin wrappers around d3",
   "main": "index.js",
   "scripts": {

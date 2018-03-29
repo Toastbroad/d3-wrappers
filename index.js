@@ -1,5 +1,6 @@
 const BarChart = require('./lib/barChart');
 
 module.exports = {
-    BarChart: BarChart,
+    BarChart: BarChart.default,
+    Wtf: "wtf",
 };

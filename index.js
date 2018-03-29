@@ -1,3 +1,3 @@
-const BarChart = require('./src/components/barchart');
+const BarChart = require('./lib/components/barchart');
 
 console.log(BarChart);

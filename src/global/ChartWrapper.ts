@@ -33,8 +33,8 @@ abstract class ChartWrapper {
         this.options = merge(defaultOptions, options);
     }
 
-    abstract getXScale(data): ScaleBand<any>;
-    abstract getYScale(data): ScaleLinear<any, any>;
+    abstract getXScale(data): ScaleBand<string>;
+    abstract getYScale(data): ScaleLinear<number, number>;
     abstract getXAxis();
     abstract getYAxis();
     abstract displayChart(): void;

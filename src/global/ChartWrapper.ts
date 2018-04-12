@@ -1,6 +1,8 @@
 import { merge } from 'lodash';
+import {ScaleBand, ScaleLinear} from "d3-scale";
+import {AxisScale} from "d3-axis";
 
-class ChartWrapper {
+abstract class ChartWrapper {
     options: {
         standalone: boolean,
         chartContainer: string
@@ -9,7 +11,6 @@ class ChartWrapper {
         yKey: string,
     };
 
-    displayChart: () => void;
     chartContainer: HTMLElement;
     xKey: string;
     yKey: string;
@@ -31,6 +32,12 @@ class ChartWrapper {
 
         this.options = merge(defaultOptions, options);
     }
+
+    abstract getXScale(data): ScaleBand<any>;
+    abstract getYScale(data): ScaleLinear<any, any>;
+    abstract getXAxis();
+    abstract getYAxis();
+    abstract displayChart(): void;
 
     initialize(): void {
         this.chartContainer = document.querySelector(this.options.chartContainer) as HTMLElement;

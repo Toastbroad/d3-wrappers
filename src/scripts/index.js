@@ -5,10 +5,11 @@ if (module.hot) {
 }
 
 import 'babel-polyfill';
-
-import { test } from './test';
 import BarChartTest from './BarChartTest';
-console.log(test("THIS IS A TEST"));
-const bcTest = new BarChartTest();
-console.log('initializing test');
-bcTest.initialize();
+
+console.log('initializing tests!!!');
+
+if (document.getElementById('bar-chart')) {
+	const bcTest = new BarChartTest();
+	bcTest.initialize();
+}

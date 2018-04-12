@@ -4,8 +4,7 @@
   "description": "A collection of thin wrappers around d3",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node_modules/babel-cli/bin/babel.js src --out-dir lib && browserify lib/scripts/index.js > lib/scripts/main.js",
+    "dev": "tsc && node_modules/babel-cli/bin/babel.js src --out-dir lib && browserify lib/scripts/index.js > lib/scripts/main.js",
     "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib"
   },
   "repository": {

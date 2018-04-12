@@ -6,8 +6,9 @@ if (module.hot) {
 
 import 'babel-polyfill';
 
+import { test } from './test';
 import BarChartTest from './BarChartTest';
-
-const test = new BarChartTest();
-console.log('initializing barcharttest');
-test.initialize();
+console.log(test("THIS IS A TEST"));
+const bcTest = new BarChartTest();
+console.log('initializing test');
+bcTest.initialize();

@@ -13,15 +13,6 @@ import { merge } from 'lodash';
 
 class BarChart { // Should we have a parent class that this component extends? like => class BarChart extends d3Component / d3WrapperComponent or something like that?
 
-	/**
-	 * Constructor for our class
-	 *
-	 * @see module.js
-	 *
-	 * @param {Object} obj - Object which is passed to our class
-	 * @param {Object} obj.el - element which will be saved in this.el
-	 * @param {Object} obj.options - options which will be passed in as JSON object
-	 */
 	constructor(options) {
 		let defaultOptions = {
 			chartContainer: '[data-js-item="chart"]',
@@ -48,35 +39,12 @@ class BarChart { // Should we have a parent class that this component extends? l
         this.options = merge(defaultOptions, options);
 	}
 
-
-	/**
-	 * Get module information
-	 */
-	static get info() {
-		return {
-			version: '1.0.0'
-		};
-	}
-
-
-	/**
-	 * Initialize the view
-	 *
-	 */
 	initialize() {
         this.chartContainer = document.querySelector(this.options.chartContainer);
         if (this.options.standalone) {
 			this.addData();
 			this.displayChart();
 		}
-	}
-
-
-	/**
-	 * Render class
-	 */
-	render() {
-
 	}
 
 	setXKey(key) {
